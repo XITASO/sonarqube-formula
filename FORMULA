@@ -1,0 +1,8 @@
+name: sonarqube
+os: CentOS
+os_family: RedHat
+version: 201606
+release: 1
+dependencies: java
+summary: Formula for installing SonarQube
+description: Formula for installing SonarQube
