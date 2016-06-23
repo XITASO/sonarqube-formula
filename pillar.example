@@ -1,0 +1,3 @@
+sonarqube:
+  config:
+    sonar.web.port: 9000
