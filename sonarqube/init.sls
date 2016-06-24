@@ -48,3 +48,24 @@ gitlab-config-{{ key }}:
     - require_in:
       - file: sonarqube-config
 {% endfor %}
+
+{% for jar, url in sonarqube.get('plugins', {}).items() %}
+{% set destination = '/opt/sonar/extensions/plugins/' + jar + '.jar' %}
+{{ destination }}:
+  cmd.run:
+    - name: 'curl -L --silent "{{ url }}" > "{{ destination }}"'
+    - unless: 'test -f "{{ destination }}"'
+    - require:
+      - pkg: sonarqube
+    - prereq:
+      - file: {{ destination }}
+
+  file.managed:
+    - name: {{ destination }}
+    - user: sonar
+    - group: sonar
+    - mode: 644
+    - replace: False
+    - watch_in:
+      - service: sonarqube
+{% endfor %}
