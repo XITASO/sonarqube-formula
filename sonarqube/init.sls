@@ -39,7 +39,7 @@ sonarqube-config:
       - service: sonarqube
 
 {% for key, value in sonarqube.get('config', {})|dictsort %}
-gitlab-config-{{ key }}:
+sonarqube-config-{{ key }}:
   file.accumulated:
     - name: sonarqube-config-accumulator
     - filename: /opt/sonar/conf/sonar.properties
