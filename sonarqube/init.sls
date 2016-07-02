@@ -19,7 +19,7 @@ sonarqube-repo:
   pkgrepo.managed:
     - name: sonar
     - humanname: Sonar
-    - baseurl: http://downloads.sourceforge.net/project/sonar-pkg/rpm
+    - baseurl: https://downloads.sourceforge.net/project/sonar-pkg/rpm
     - gpgcheck: 0
 
 sonarqube-wrapper-conf:
